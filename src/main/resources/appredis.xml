@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<redis>
+    <!-- redis节点 配置开始 -->
+    <apps>
+        <node>
+            <id>secoo-freeze</id>
+            <model>cluster</model>
+            <servers>snode3</servers>
+            <dbIndex>0</dbIndex>
+            <pool>
+                <!-- 最大的连接数 -->
+                <maxTotal>300</maxTotal>
+                <!-- 最大的空闲连接 -->
+                <maxIdle>100</maxIdle>
+                <!-- 最大的等待时间(ms) -->
+                <maxWait>5000</maxWait>
+                <!-- 连接超时 -->
+                <timeout>5000</timeout>
+            </pool>
+        </node>
+        <node>
+            <id>secoo-cloud</id>
+            <model>single</model>
+            <servers>snode2</servers>
+            <dbIndex>0</dbIndex>
+            <pool>
+                <!-- 最大的连接数 -->
+                <maxTotal>300</maxTotal>
+                <!-- 最大的空闲连接 -->
+                <maxIdle>100</maxIdle>
+                <!-- 最大的等待时间(ms) -->
+                <maxWait>1000</maxWait>
+                <!-- 连接超时 -->
+                <timeout>1000</timeout>
+            </pool>
+        </node>
+        <node>
+            <id>secoo-cloud-cart</id>
+            <model>single</model>
+            <servers>snode4</servers>
+            <dbIndex>0</dbIndex>
+            <pool>
+                <!-- 最大的连接数 -->
+                <maxTotal>300</maxTotal>
+                <!-- 最大的空闲连接 -->
+                <maxIdle>100</maxIdle>
+                <!-- 最大的等待时间(ms) -->
+                <maxWait>3000</maxWait>
+                <!-- 连接超时 -->
+                <timeout>3000</timeout>
+            </pool>
+        </node>
+    </apps>
+    <!-- redis节点 配置结束 -->
+    <servers>
+        <node>
+            <id>snode1</id>
+            <!-- Ip地址 -->
+            <hosts>
+                10.185.240.132:7000;10.185.240.132:7001;10.185.240.132:7002;10.185.240.132:7003;10.185.240.132:7004;10.185.240.132:7005
+            </hosts>
+            <!-- 密码 -->
+            <password></password>
+        </node>
+        <node>
+            <id>snode2</id>
+            <!-- Ip地址 -->
+            <hosts>10.185.240.132:6379</hosts>
+            <!-- 密码 -->
+            <password>foobared</password>
+        </node>
+        <node>
+            <id>snode3</id>
+            <!-- Ip地址 -->
+            <hosts>
+                10.185.240.142:7001;10.185.240.142:7002;10.185.240.142:7003;10.185.240.142:7004;10.185.240.142:7005;10.185.240.142:7006
+            </hosts>
+            <!-- 密码 -->
+            <password></password>
+        </node>
+        <node>
+            <id>snode4</id>
+            <!-- Ip地址 -->
+            <hosts>
+                192.168.70.212
+            </hosts>
+            <!-- 密码 -->
+            <password></password>
+        </node>
+    </servers>
+</redis>
